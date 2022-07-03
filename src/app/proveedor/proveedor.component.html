@@ -1,0 +1,62 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="col-md-12">
+      <div class="card" id="transparent">
+        <h2>
+          Listado de Proveedores.
+          <div class="col-md-8" style="margin-top: 20px">
+            <form class="navbar-form">
+              <div class="input-group no-border">
+                <input
+                  type="search"
+                  value=" "
+                  class="form-control"
+                  name="search"
+                  [(ngModel)]="search"
+                  placeholder="Buscar proveedor"
+                  (keyup)="loadProveedor()"
+                />
+                <button
+                  mat-raised-button
+                  type="submit"
+                  class="btn btn-white btn-round btn-just-icon"
+                >
+                  <i class="material-icons">search</i>
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+            </form>
+          </div>
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div
+        *ngFor="let proveedor of allProveedores"
+        class="col-lg-3 col-md-6 col-sm-6"
+      >
+        <div class="card">
+          <a [routerLink]="['/proveedor', proveedor.idproveedor]">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title">
+                {{ proveedor.nombresproveedor }}
+              </h4>
+              <p class="card-category">
+                {{ proveedor.apellidosproveedor }}
+              </p>
+            </div>
+            <div class="card-body center">
+              <p class="card-category">
+                <b>Direccion:</b> {{ proveedor.direccion }}
+              </p>
+              <p class="card-category"><b>Correo:</b> {{ proveedor.correo }}</p>
+              <p class="card-category">
+                <b>Telefono:</b> {{ proveedor.telefono }}
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

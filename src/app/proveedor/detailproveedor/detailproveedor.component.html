@@ -1,0 +1,95 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header card-header-danger" *ngIf="proveedor">
+            <h4 class="card-title">
+              {{ proveedor.nombresproveedor }}
+            </h4>
+            <p class="card-category">
+              {{ proveedor.apellidosproveedor }}
+            </p>
+          </div>
+          <div class="card-body" *ngIf="proveedor">
+            <div class="row">
+              <div class="col-md-6">
+                <span>Documento:</span>
+                <p class="description">{{ proveedor.documento }}</p>
+              </div>
+              <div class="col-md-6">
+                <span>Numero de Telefono:</span>
+                <p class="description">{{ proveedor.telefono }}</p>
+              </div>
+              <div class="col-md-6">
+                <span>Dirección:</span>
+                <p class="description">{{ proveedor.direccion }}</p>
+              </div>
+              <div class="col-md-6">
+                <span>Correo Electronico:</span>
+                <p class="description">{{ proveedor.correo }}</p>
+              </div>
+              <div class="col-md-6">
+                <span>Cantidad Vehiculos Disponibles:</span>
+                <p class="description">
+                  {{ proveedor.cantvehiculosdisponibles }}
+                </p>
+              </div>
+            </div>
+            <div
+              class="btn-group-detail mt-2 mb-4"
+              role="group"
+              aria-label="actionButtons"
+            >
+              <a
+                class="d-block btn btn-outline-light"
+                [routerLink]="['/proveedores']"
+                [routerLinkActive]="['actived']"
+                >Volver al listado de proveedores</a
+              >
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p *ngIf="confirm == false">
+                  <button
+                    [routerLink]="['/editproveedor', proveedor.idproveedor]"
+                    type="button"
+                    class="d-block btn btn-light"
+                  >
+                    Editar proveedor {{ proveedor.nombresproveedor }}
+                    {{ proveedor.apellidosproveedor }}
+                  </button>
+                </p>
+              </div>
+              <div class="col-md-6">
+                <button
+                  (click)="setConfirm(true)"
+                  class="d-block btn btn-light"
+                >
+                  Borrar proveedor {{ proveedor.nombresproveedor }}
+                  {{ proveedor.apellidosproveedor }}
+                </button>
+                <p *ngIf="confirm == true">
+                  <span>¿Estas seguro de eliminar proveedor?</span>
+                  <br />
+                  <button (click)="setConfirm(false)" class="btn btn-secondary">
+                    Cancelar
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-light"
+                    *ngIf="proveedor"
+                    (click)="deleteProveedor(proveedor.idproveedor)"
+                  >
+                    Eliminar Definitivo
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

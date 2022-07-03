@@ -1,0 +1,199 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-7">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Crear o modificar Proveedor</h4>
+            <p class="card-category">Completa la información del proveedor:</p>
+          </div>
+          <div class="card-body" *ngIf="proveedor">
+            <form #proveedorForm="ngForm" (ngSubmit)="onSubmit(proveedorForm)">
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="text"
+                      name="Primer nombre"
+                      #nombresproveedor="ngModel"
+                      [(ngModel)]="proveedor.nombresproveedor"
+                      required
+                      placeholder="Primer nombre"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="nombresproveedor.touched && !nombresproveedor.valid"
+                  >
+                    Campo Requerido nombres del proveedor.
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="text"
+                      name="Apellidos Proveedor"
+                      #apellidosproveedor="ngModel"
+                      [(ngModel)]="proveedor.apellidosproveedor"
+                      required
+                      placeholder="Apellidos Proveedor"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="
+                      apellidosproveedor.touched && !apellidosproveedor.valid
+                    "
+                  >
+                    Campo Requerido apellidos proveedor.
+                  </span>
+                </div>
+
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="number"
+                      name="documento"
+                      #documento="ngModel"
+                      [(ngModel)]="proveedor.documento"
+                      required
+                      placeholder="Documento"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="documento.touched && !documento.valid"
+                  >
+                    Campo Requerido documento.
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="text"
+                      name="direccion"
+                      #direccion="ngModel"
+                      [(ngModel)]="proveedor.direccion"
+                      required
+                      placeholder="Direccion"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="direccion.touched && !direccion.valid"
+                  >
+                    Campo Requerido direccion.
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="text"
+                      name="correo"
+                      #correo="ngModel"
+                      [(ngModel)]="proveedor.correo"
+                      required
+                      placeholder="correo"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="correo.touched && !correo.valid"
+                  >
+                    Campo Requerido correo.
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="number"
+                      name="telefono"
+                      #telefono="ngModel"
+                      [(ngModel)]="proveedor.telefono"
+                      required
+                      placeholder="Telefono"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="telefono.touched && !telefono.valid"
+                  >
+                    Campo Requerido telefono.
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="number"
+                      name="cantvehiculosdisponibles"
+                      #cantvehiculosdisponibles="ngModel"
+                      [(ngModel)]="proveedor.cantvehiculosdisponibles"
+                      required
+                      placeholder="cantvehiculosdisponibles"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="
+                      cantvehiculosdisponibles.touched &&
+                      !cantvehiculosdisponibles.valid
+                    "
+                  >
+                    Campo Requerido cantidad vehiculos disponibles.
+                  </span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="message success" *ngIf="status == 'success'">
+                    <h4>
+                      Ha funcionado correctamente
+
+                      <a [routerLink]="['/proveedores']" style="color: #ffee07">
+                        <b>ver lista de proveedores</b>
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div
+                    class="message failed"
+                    *ngIf="status == 'failed'"
+                    style="font-size: 23px; color: #5a2fd0"
+                  >
+                    Proveedor no pudo ser creado
+                  </div>
+                  <button
+                    mat-raised-button
+                    type="submit"
+                    value="Enviar"
+                    style="width: 100% !important"
+                    [disabled]="!proveedorForm.form.valid"
+                    class="d-block btn btn-outline-light"
+                  >
+                    Enviar Proveedor
+                  </button>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
